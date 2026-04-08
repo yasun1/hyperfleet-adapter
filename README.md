@@ -72,6 +72,44 @@ make lint
 make fmt
 ```
 
+### Pre-commit Hooks
+
+This project uses [pre-commit](https://pre-commit.io/) for code quality and security checks.
+
+**Setup:**
+
+```bash
+# Install pre-commit
+brew install pre-commit  # macOS
+# or
+pip install pre-commit
+
+# Install hooks
+pre-commit install
+pre-commit install --hook-type pre-push
+
+# Test
+pre-commit run --all-files
+```
+
+**For External Contributors:**
+
+The `.pre-commit-config.yaml` includes `rh-pre-commit` which requires access to Red Hat's internal GitLab. External contributors can skip it:
+
+```bash
+# Skip internal hook when committing
+SKIP=rh-pre-commit git commit -m "your message"
+```
+
+Or comment out the internal hook in `.pre-commit-config.yaml`.
+
+**Update Hooks:**
+
+```bash
+pre-commit autoupdate
+pre-commit run --all-files
+```
+
 ## Development
 
 ### Project Structure
